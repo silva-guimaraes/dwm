@@ -49,3 +49,10 @@ uninstall:
 		${DESTDIR}${MANPREFIX}/man1/dwm.1
 
 .PHONY: all options clean dist install uninstall
+
+test: all
+	Xephyr -br -ac -noreset -screen 800x600 :1 &
+	sleep 2
+	DISPLAY=:1 ./dwm
+
+
